@@ -16,12 +16,154 @@
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="lomoyegithubio" class="anchor" href="#lomoyegithubio" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>lomoye.github.io</h1>
+      <p>&lt;!DOCTYPE html&gt;
 
-<p>鹿慕叶的小天地,thanks for github~
- hello 王梦娜！
-i love you</p>
+    </p>
+        AngularUI for AngularJS
+
+<pre><code>    &lt;link href="logo/UI_Shield.png" rel="shortcut icon"&gt;
+
+    &lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"&gt;
+    &lt;link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"&gt;
+    &lt;link href="css/app.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+
+&lt;body ng-controller="DemoCtrl"&gt;
+    &lt;header class="navbar navbar-fixed-top navbar-default"&gt;
+        &lt;div class="navbar-inner"&gt;
+            &lt;div class="container"&gt;
+                &lt;div class="navbar-header"&gt;
+                    &lt;a class="navbar-brand" href="http://angular-ui.github.io/"&gt;AngularUI&lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;div class="container"&gt;
+                    &lt;div class="container"&gt;
+                        &lt;div class="dropdown"&gt;&lt;/div&gt;
+
+                        &lt;div class="navbar-collapse"&gt;
+                            &lt;ul class="nav navbar-nav"&gt;
+                                &lt;li&gt;
+                                    &lt;a href="#modules"&gt;Modules&lt;/a&gt;
+                                &lt;/li&gt;
+
+                                &lt;li&gt;
+                                    &lt;a href="#ide-plugins"&gt;IDE Plugins&lt;/a&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                    &lt;a href="https://github.com/angular-ui"&gt;&lt;i class="fa fa-lg fa-github"&gt;&lt;/i&gt; GitHub&lt;/a&gt;
+                                &lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;div&gt;
+        &lt;header class="jumbotron" id="overview"&gt;
+            &lt;div class="container"&gt;
+                &lt;div class="col-sm-3 logo"&gt;&lt;/div&gt;
+                &lt;div class="col-sm-7"&gt;
+                    &lt;h1&gt;AngularUI&lt;/h1&gt;
+
+                    &lt;p&gt;The companion suite(s) to the &lt;a href="http://angularjs.org"&gt;AngularJS&lt;/a&gt; framework.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="bs-docs-social"&gt;
+                &lt;div class="container"&gt;
+                    &lt;ul class="bs-docs-social-buttons"&gt;
+                        &lt;li&gt;
+                            &lt;a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="angularjs"&gt;Tweet&lt;/a&gt;
+                            &lt;script&gt;!function(d, s, id) {
+                                            var js, fjs = d.getElementsByTagName(s)[0];
+                                            if (!d.getElementById(id)) {
+                                                js = d.createElement(s);
+                                                js.id = id;
+                                                js.src = "//platform.twitter.com/widgets.js";
+                                                fjs.parentNode.insertBefore(js, fjs);
+                                            }
+                                        }(document, "script", "twitter-wjs");&lt;/script&gt;
+                        &lt;/li&gt;
+
+                        &lt;li&gt;
+                            &lt;!-- Place this tag where you want the +1 button to render. --&gt;
+
+                            &lt;div class="g-plusone" data-size="medium"&gt;&lt;/div&gt;&lt;!-- Place this tag after the last +1 button tag. --&gt;
+                            &lt;!-- Place this tag after the last +1 button tag. --&gt;
+                            &lt;script type="text/javascript"&gt;
+                                        (function() {
+                                            var po = document.createElement('script');
+                                            po.type = 'text/javascript';
+                                            po.async = true;
+                                            po.src = 'https://apis.google.com/js/plusone.js';
+                                            var s = document.getElementsByTagName('script')[0];
+                                            s.parentNode.insertBefore(po, s);
+                                        })();
+                            &lt;/script&gt;
+
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+
+        &lt;div class="container" &gt;
+            &lt;section id="modules"&gt;
+                &lt;h1 class="page-header"&gt;Modules&lt;/h1&gt;
+                &lt;p class="text-muted"&gt;
+                    &lt;input class="form-control" autofocus="autofocus" style="max-width: 15em; display: inline-block;" ng-model="searchText" placeholder="search..."&gt;
+                    {{(modules| filter:searchText).length}} modules found
+                &lt;/p&gt;
+                &lt;div class="list-group"&gt;
+                    &lt;div ng-repeat="module in modules| filter:searchText | orderBy: 'name'" href="{{module.src}}" class="list-group-item"&gt;
+                        &lt;p class="pull-right"&gt;
+                            &lt;a href="{{module.home}}" title="Home / Demo page" ng-if="module.home"&gt;&lt;i class="fa fa-3x fa-home"&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a href="{{module.src}}" title="Code"&gt;&lt;i class="fa fa-3x fa-github"&gt;&lt;/i&gt;&lt;/a&gt;
+                        &lt;/p&gt;
+                        &lt;h4 class="list-group-item-heading"&gt;{{module.name}}&lt;/h4&gt;
+                        &lt;p class="list-group-item-text text-muted"&gt;{{module.desc}}&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/section&gt;
+
+
+            &lt;section id="ide-plugins"&gt;
+                &lt;h1 class="page-header"&gt;IDE Plugins &lt;small&gt;AngularJS support in your favorite text editors&lt;/small&gt;&lt;/h1&gt;
+
+                &lt;div class="clearfix"&gt;
+                    &lt;ul class="nav nav-tabs nav-stacked col-md-6"&gt;
+                        &lt;li&gt;
+                            &lt;a href="http://github.com/angular-ui/AngularJS.tmbundle"&gt;AngularJS.tmbundle &lt;span class="text-muted"&gt;TextMate&lt;/span&gt;&lt;/a&gt;
+                        &lt;/li&gt;
+
+                        &lt;li&gt;
+                            &lt;a href="http://github.com/angular-ui/AngularJS-Atom"&gt;AngularJS-Atom &lt;span class="text-muted"&gt;Atom&lt;/span&gt;&lt;/a&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+
+                    &lt;ul class="nav nav-tabs nav-stacked col-md-6"&gt;
+                        &lt;li&gt;
+                            &lt;a href="http://github.com/angular-ui/AngularJS-sublime-package"&gt;AngularJS.sublime-package &lt;span class="text-muted"&gt;SublimeText&lt;/span&gt;&lt;/a&gt;
+                        &lt;/li&gt;
+
+                        &lt;li&gt;
+                            &lt;a href="http://github.com/angular-ui/AngularJS-brackets"&gt;AngularJS-brackets &lt;span class="text-muted"&gt;Brackets&lt;/span&gt;&lt;/a&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/section&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"&gt;&lt;/script&gt;
+    &lt;script src="js/app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p></p>
 
       <footer class="site-footer">
 
